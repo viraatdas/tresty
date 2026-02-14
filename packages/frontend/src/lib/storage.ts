@@ -55,3 +55,8 @@ export function getSwipedIds(): string[] {
 export function hasBeenSwiped(restaurantId: string): boolean {
   return getRecords().some((r) => r.restaurantId === restaurantId);
 }
+
+export function clearNotInterested(): void {
+  const records = getRecords();
+  saveRecords(records.filter((r) => r.action !== "not_interested"));
+}

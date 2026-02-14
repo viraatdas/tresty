@@ -67,10 +67,24 @@ body {
   border-radius: 3px;
 }
 
-/* Smooth scrolling on mobile */
+/* Mobile optimizations */
 html {
   -webkit-tap-highlight-color: transparent;
   scroll-behavior: smooth;
+  overscroll-behavior: none;
+}
+
+html, body {
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Safe area insets for notch phones */
+.safe-area-pb {
+  padding-bottom: max(0.375rem, env(safe-area-inset-bottom));
+}
+.safe-area-pt {
+  padding-top: max(0.75rem, env(safe-area-inset-top));
 }
 
 /* Hide scrollbar but keep scrolling */

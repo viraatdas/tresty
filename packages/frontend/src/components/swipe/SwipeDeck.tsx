@@ -4,7 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import TinderCard from "react-tinder-card";
 import type { Restaurant, SwipeAction } from "@/lib/types";
 import { getRestaurants } from "@/lib/api";
-import { addSwipeRecord, getSwipedIds } from "@/lib/storage";
+import { addSwipeRecord, getSwipedIds, clearNotInterested } from "@/lib/storage";
 import SwipeCard from "./SwipeCard";
 import SwipeActions from "./SwipeActions";
 import SwipeOverlay from "./SwipeOverlay";
@@ -158,8 +158,18 @@ export default function SwipeDeck() {
           You&apos;ve seen them all!
         </h2>
         <p className="text-gray-400 text-sm">
-          You swiped through {swipedCount} restaurants. Come back for more later!
+          You swiped through {swipedCount} restaurants.
         </p>
+        <button
+          onClick={() => {
+            clearNotInterested();
+            setSwipedCount(0);
+            fetchMore();
+          }}
+          className="mt-2 px-6 py-2.5 bg-gradient-to-r from-rose-500 to-orange-400 text-white font-semibold rounded-full text-sm active:scale-95 transition-transform"
+        >
+          Start Over
+        </button>
       </div>
     );
   }
