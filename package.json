@@ -1,0 +1,21 @@
+{
+  "name": "tresty",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:backend": "pnpm -w run --filter @tresty/backend dev",
+    "dev:frontend": "pnpm -w run --filter @tresty/frontend dev",
+    "build:shared": "pnpm --filter @tresty/shared build",
+    "build:backend": "pnpm --filter @tresty/backend build",
+    "build:frontend": "pnpm --filter @tresty/frontend build",
+    "build": "pnpm build:shared && pnpm build:backend && pnpm build:frontend"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild"
+    ]
+  }
+}

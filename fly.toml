@@ -1,0 +1,25 @@
+app = "tresty-api"
+primary_region = "sjc"
+
+[build]
+  dockerfile = "packages/backend/Dockerfile"
+
+[env]
+  PORT = "3001"
+  SQLITE_PATH = "/data/tresty-cache.db"
+
+[http_service]
+  internal_port = 3001
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+
+[mounts]
+  source = "tresty_data"
+  destination = "/data"
+
+[[vm]]
+  memory = "512mb"
+  cpu_kind = "shared"
+  cpus = 1
