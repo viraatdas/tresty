@@ -9,8 +9,28 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://forksy.viraat.dev"),
   title: "forksy",
   description: "Swipe to discover the hottest restaurants in SF",
+  applicationName: "forksy",
+  keywords: ["restaurants", "san francisco", "swipe", "food", "dining", "sf"],
+  authors: [{ name: "forksy" }],
+  openGraph: {
+    title: "forksy",
+    description: "Swipe to discover the hottest restaurants in SF",
+    siteName: "forksy",
+    type: "website",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "forksy",
+    description: "Swipe to discover the hottest restaurants in SF",
+  },
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon",
+  },
 };
 
 export const viewport: Viewport = {
@@ -18,6 +38,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: "#f43f5e",
 };
 
 export default function RootLayout({
